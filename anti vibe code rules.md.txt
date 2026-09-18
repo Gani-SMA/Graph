@@ -1,0 +1,43 @@
+
+Anti-Vibecode Ruleset:
+
+Paste this into Claude/ChatGPT alongside any website prompt to keep it off the "obviously AI-made" defaults.
+You are designing/coding a real product page, not a template demo. Before writing any code, commit to specific choices for palette, type, and layout that come from THIS brief's subject matter — not from what's statistically common in AI-generated sites. The following 30 patterns are banned by default. Each one has a rule and a required alternative. If you're about to reach for one, stop and pick the alternative instead.
+Visual style
+Harsh gradients — No saturated two-color diagonal gradients on backgrounds or buttons. Use a single flat color, a subtle 2–4% tonal shift, or a texture drawn from the subject (grain, paper, fabric) instead.
+Lucide icons — Do not use the Lucide/Feather/Heroicons default icon set. Either draw custom simple SVG marks that reference the subject, use no icons, or use a single icon family with real personality (e.g. hand-drawn, thick-lined, or subject-specific).
+Purple gradient backgrounds — Purple-to-blue or purple-to-pink gradient hero backgrounds are banned outright, regardless of brand.
+Rainbow/multi-color accent chips — no rainbow-gradient badges, chips, or borders.
+Drop shadows on everything — Use shadow only on one intentional elevated element (e.g. a sticky nav or a modal), not on every card/button by default.
+"3 feature cards in a row" as the default section shape — Don't reflexively lay out benefits as three identical icon-over-heading-over-paragraph cards. Vary the number and rhythm to fit real content.
+Emoji used as icons — no 🚀✨💡 standing in for iconography or bullet points.
+Glassmorphism (blurred translucent panels) — no backdrop-filter: blur() panels floating over gradients.
+Em dashes everywhere in copy — Vary punctuation; don't let every third sentence in your copy use "—".
+Inter / Geist / Space Grotesk as the default font — Pick typefaces deliberately for this subject. If a grotesk sans genuinely fits, choose a specific one and pair it with a real display face — don't default to whichever three fonts every AI demo uses.
+Colored left stripe on cards — no border-left: 4px solid [accent] as a generic "this card is important" signal.
+Fake testimonials — Never invent quotes attributed to fictional customers with stock-photo headshots. If you don't have real testimonials, don't fabricate the section.
+Bento grids — Don't default to an irregular multi-cell "bento" grid unless the content is genuinely modular data that benefits from at-a-glance scanning.
+Terminal/code-window chrome — no fake macOS traffic-light terminal window as a decorative container unless the product is literally a dev tool.
+"It's not X, it's Y" copy — Ban this exact rhetorical crutch in headlines and body copy.
+Checkmark bullet lists — Don't use ✓ green checkmarks for every list. Use plain typographic bullets, numerals only where order is real, or a mark specific to the subject.
+Three pricing tiers (Basic/Pro/Enterprise) — Don't default to exactly three tiers with one visually "highlighted" as recommended unless the actual pricing model calls for it.
+No real product demos/imagery — Never ship a page with only abstract shapes standing in for the actual product. Show the real thing (real dish, real screen, real object) even as a placeholder-labeled area.
+Soft/uniform corner radius everywhere — Don't apply the same border-radius: 12pxish rounding to every button, card, and image. Vary radius intentionally or use sharp corners where the subject calls for precision.
+Purple-and-black as the default "premium" palette — Derive the palette from the subject's real-world materials and colors, not from a generic "techy/premium" purple-on-black scheme.
+Skeleton loaders as decoration — Don't add shimmering skeleton-loader placeholders to a static marketing page that has no real async loading.
+Radial gradient "orbs" — no glowing blurred circles floating behind hero content.
+Dot-grid background patterns — no faint dot-matrix background texture as a default "modern SaaS" tell.
+Sparkle/star icons for "AI" or "new" — Don't use a ✨ sparkle glyph as a generic magic/AI signifier.
+Animated arrows on hover — Don't add an auto-animating arrow (→ sliding right) to every link and button by default.
+Missing Terms of Service — If the page implies a real transaction or account, include a real (or clearly-labeled placeholder) ToS link, not silence.
+Missing Privacy Policy — Same as above for a privacy policy link in the footer.
+Generic hover animations on every element — Pick ONE orchestrated motion moment for the page (a load-in sequence, one scroll reveal, one signature hover) rather than scattering transform: scale(1.05) on every card.
+Neon-on-dark as the default "modern" look — Don't default to neon green/pink accents on near-black unless the subject is genuinely nightlife/gaming/cyber.
+Generic pastel palette (baby blue, blush pink, mint, butter yellow used interchangeably) — Don't pick a palette because it's "soft and modern" in the abstract. Every color must trace back to something real in the subject (a material, a food, a place, a brand history).
+Process rule (apply before writing any code)
+State the real subject, audience, and the page's one job in a sentence.
+Propose a palette of 4–6 named hex values, each justified by something specific to the subject (not "looks premium").
+Propose two typefaces (display + body) neither of which is Inter/Geist/Space Grotesk, justified by the subject.
+Sketch the layout in prose/ASCII before coding it.
+Check the plan against the 30 rules above. Name anything that's still a generic default and replace it.
+Only then write the code.

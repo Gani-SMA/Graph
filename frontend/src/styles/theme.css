@@ -1,0 +1,237 @@
+:root {
+  /* ── Anti-Vibecode Palette (Asphalt / Transit / Map Cartography) ─────────── */
+  --bg-app:          #121518;
+  --bg-panel:        #1A1D20;
+  --bg-card:         #22262B;
+  --bg-card-hover:   #2A2F36;
+  --bg-panel-overlay: rgba(26, 29, 32, 0.92);
+
+  --border-subtle:   #2C3238;
+  --border-focus:    #E5A93C;
+
+  --accent-gold:          #E5A93C;
+  --accent-gold-bg:       rgba(229, 169, 60, 0.12);
+  --accent-safety-orange: #E05A47;
+  --accent-clear-mint:    #27AE60;
+
+  --text-main:  #E8ECF0;
+  --text-muted: #9DA8B6;
+  --text-dim:   #6B7785;
+
+  --font-display: 'Outfit', -apple-system, sans-serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+}
+
+/* ── Light theme overrides ──────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-app:          #F5F5F0;
+  --bg-panel:        #EAEAE4;
+  --bg-card:         #DFDFD8;
+  --bg-card-hover:   #D4D4CC;
+  --bg-panel-overlay: rgba(234, 234, 228, 0.95);
+
+  --border-subtle:   #C8C8C0;
+  --border-focus:    #C8860A;
+
+  /* Accent colours stay consistent across themes for functional indicators */
+  --accent-gold:          #E5A93C;
+  --accent-gold-bg:       rgba(229, 169, 60, 0.15);
+  --accent-safety-orange: #E05A47;
+  --accent-clear-mint:    #27AE60;
+
+  /* Dark text on light backgrounds — all meet WCAG AA 4.5:1 vs #F5F5F0 */
+  --text-main:  #1A1D20;
+  --text-muted: #4A5568;
+  --text-dim:   #6B7280;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  /* Smooth colour transition when theme toggles */
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+
+/* ── Dual Theme Selector ─────────────────────────────────────────────────────── */
+.theme-toggle-group {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-main);
+  background-color: var(--bg-card-hover);
+}
+
+.theme-toggle-btn.active {
+  background-color: var(--accent-gold);
+  color: #121518;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Live GPS Pulsing Marker ─────────────────────────────────────────────────── */
+.pulse-marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 30px;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(39, 174, 96, 0.4);
+  animation: map-pulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+.pulse-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #27AE60;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 8px rgba(39, 174, 96, 0.8);
+  z-index: 2;
+}
+
+.pulse-label {
+  position: absolute;
+  top: -18px;
+  background-color: #27AE60;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  padding: 2px 6px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  z-index: 3;
+}
+
+@keyframes map-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ── Floating Map Quick Actions ─────────────────────────────────────────────── */
+.map-floating-controls {
+  position: absolute;
+  bottom: 24px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-control-card {
+  background-color: var(--bg-panel-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.map-btn {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.map-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--accent-gold);
+}
+
+.map-btn.active {
+  background-color: var(--accent-gold-bg);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
